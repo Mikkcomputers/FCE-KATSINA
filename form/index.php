@@ -52,19 +52,20 @@ include_once("../server/index.php");
     //adding courses
     function courses($conn) {
         if (isset($_POST['btn_course'])) {
-            $course = $_POST['course'];
+            $course = $_POST['couse'];
             $department = $_POST['department'];
-            $programme = $_POST['programme'];
+            $programme = $_POST['programmes'];
             $about = $_POST['about'];
 
-            $sql = "INSERT INTO `course`(`course`, `department`, `programme`, `about`)VALUES(?,?,?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssss", $course, $department, $programme, $about);
-            $res = $stmt->execute();
-            if ($res) {
+            $sql = "INSERT INTO couses(`course`, `department`, `programmes`, `about`)VALUES(?,?,?,?)";
+            $stm = $conn->prepare($sql);
+            $stm->bind_param("ssss", $course, $department, $programme, $about);
+            $res = $stm->execute();
+            // <!-- // $res = $stmt->get_result; -->
+            if ($res === true) {
                 echo"adding course successfully";
             }else{
-                echo"fail to adding course";
+                echo"fail to adding course".$conn->error;
             }
         }
     }

@@ -27,7 +27,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="Course" required  id="inputFirstName" type="text" placeholder="" />
+                                                        <input class="form-control" name="couse" required  id="inputFirstName" type="text" placeholder="" />
                                                         <label for="inputFirstName">Course</label>
                                                     </div>
                                                 </div>
@@ -55,7 +55,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="../">Back to Dashboard</a></div>
+                                        <div class="small"><a href="../dashboard">Back to Dashboard</a></div>
                                     </div>
                                 </div>
                             </div>
