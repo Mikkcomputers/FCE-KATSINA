@@ -1,5 +1,5 @@
 <?php
-include_once("../server/index.php");
+include_once("./server/index.php");
 
 //register function
     function register($conn){
