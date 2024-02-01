@@ -1,6 +1,5 @@
 <?php
 include_once("../server/index.php");
-    session_start();
 
 //register function
     function register($conn){
@@ -39,6 +38,7 @@ include_once("../server/index.php");
             $res = $stmt->get_result();
             $count = $res->num_rows;
             if ($count>0) {
+                // session_start();
                 $_SESSION['admin'] = $username;
                 header("location: ../dashboard");
             }else{
@@ -70,5 +70,144 @@ include_once("../server/index.php");
         }
     }
     courses($conn);
-    
+
+    //adding staffs
+    function staffs($conn) {
+        if (isset($_POST['btn_staff'])) {
+            $name = $_POST['name'];
+            $position = $_POST['position'];
+            $phone = $_POST['phone'];
+            $email = $_POST['email'];
+            $about = $_POST['about'];
+
+            $sql = "INSERT INTO staff(`name`, `position`, `phone`, `email`, `about`)VALUES(?,?,?,?,?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssss", $name, $position, $phone, $email, $about);
+            $res = $stmt->execute();
+            if ($res === true) {
+                echo"adding successfully";
+            }else{
+                echo"adding staff fail...".$conn->error;
+            }
+        }
+    }
+    staffs($conn);
+
+    //adding schedule
+    function schedule($conn) {
+        if (isset($_POST['btn_schedule'])) {
+            $schedule = $_POST['schedule'];
+            $comment = $_POST['comment'];
+
+            $sql = "INSERT INTO schedule(`schedule`, `comment`)VALUES(?,?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ss",$schedule, $comment);
+            $res = $stmt->execute();
+
+            if ($res === true) {
+                echo"adding schedule successfully";
+            }else{
+                echo"adding shedule fail...".$conn->error;
+            }
+        }
+    }
+    schedule($conn);
+
+    //adding payment
+    function payment($conn) {
+        if (isset($_POST['btn_pay'])) {
+            $infor = $_POST['infor'];
+
+            $sql = "INSERT INTO payment_infor(`infor`)VALUES(?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s",$infor);
+            $res = $stmt->execute();
+
+            if ($res === true) {
+                echo"adding payment details successfully";
+            }else{
+                echo"adding payment details fail...".$conn->error;
+            }
+        }
+    }
+    payment($conn);
+
+    //registeration information
+    function register_infor($conn) {
+        if (isset($_POST['btn_infor'])) {
+            $infor = $_POST['reg'];
+
+            $sql = "INSERT INTO register_infor(`infor`)VALUES(?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $infor);
+            $res = $stmt->execute();
+            if ($res === true) {
+                echo"adding successfully";
+            }else{
+                echo"adding fail..".$conn->error;
+            }
+        }
+    }
+    register_infor($conn);
+
+    //fetch form courses table
+    function query1($conn) {
+        $sql = "SELECT * FROM couses";
+        $res = $conn->query($sql);
+        if ($res->num_rows>0) {
+            return $res->fetch_all(MYSQLI_ASSOC);
+        } else{
+            return [];
+        }
+    }
+    // fetch staffs table
+    function query2($conn) {
+        $sql = "SELECT * FROM staff";
+        $res = $conn->query($sql);
+        if ($res->num_rows>0) {
+            return $res->fetch_all(MYSQLI_ASSOC);
+        } else{
+            return [];
+        }
+    }
+    //fetch schedule table 
+    function query3($conn) {
+        $sql = "SELECT * FROM schedule";
+        $res = $conn->query($sql);
+        if ($res->num_rows>0) {
+            return $res->fetch_all(MYSQLI_ASSOC);
+        } else{
+            return [];
+        }
+    }
+
+    //fetch registration details table
+    function query4($conn) {
+        $sql = "SELECT * FROM register_infor";
+        $res = $conn->query($sql);
+        if ($res->num_rows>0) {
+            return $res->fetch_all(MYSQLI_ASSOC);
+        } else{
+            return [];
+        }
+    }
+    //fetch payment table
+    function query5($conn) {
+        $sql = "SELECT * FROM payment_infor";
+        $res = $conn->query($sql);
+        if ($res->num_rows>0) {
+            return $res->fetch_all(MYSQLI_ASSOC);
+        } else{
+            return [];
+        }
+    }
+    // function query2($conn) {
+    //     $sql = "SELECT * staff";
+    //     $result = $conn->query($sql);
+    //     if ($result->num_rows>0) {
+    //         return $result->fetch_all(MYSQLI_ASSOC);
+    //     }else{
+    //         return[];
+    //     }
+    // }
 ?>

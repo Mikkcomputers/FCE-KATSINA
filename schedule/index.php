@@ -1,5 +1,5 @@
 <?php
-    include_once("../core.php")
+    include "../core.php";
 
 ?>
 <!DOCTYPE html>
@@ -10,8 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <link href="../assets/img/logo.png" rel="icon">
-        <title>Dashboard - FCE KATSINA</title>
+        <title>SCHEDULE - FCE KATSINA</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -23,17 +22,17 @@
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
-            <p class="text-cente" style="color: white; padding: 7px;">FEDERAL COLLEGE OF EDUCATION KATSINA AND (ATC)</h2>
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
+                <p class="text-cente" style="color: white; padding: 7px;">FEDERAL COLLEGE OF EDUCATION KATSINA AND (ATC)</h2>
+                <!-- <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
+                </div> -->
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?=$_SESSION['admin'] ?></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><?=$_SESSION['admin']?></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <!-- <li><a class="dropdown-item" href="#!">Activity Log</a></li> -->
@@ -46,14 +45,14 @@
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu bg-success text-light">
+                    <div class="sb-sidenav-menu bg-success" >
                         <div class="nav ">
                             <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
-                            <a class="nav-link" href="./">
+                            <a class="nav-link" href="../dashboard">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="../course/">
+                            <a class="nav-link" href="../">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Courses
                             </a>
@@ -61,7 +60,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 STAFFS
                             </a>
-                            <a class="nav-link" href="../schedule">
+                            <a class="nav-link" href="./">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 SCHEDULE
                             </a>
@@ -70,7 +69,7 @@
                                 PAYMENT DETAILS
                             </a>
                             <a class="nav-link" href="../register-infor">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                <!-- <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div> -->
                                 REGISTER INFO
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -87,37 +86,11 @@
                                     <a class="nav-link" href="../add_payment/">Payment Details</a>
                                 </nav>
                             </div>
-                            <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
-                                        </nav>
-                                    </div>
-                                   
-                                </nav>
-                            </div> -->
-                            <!-- <div class="sb-sidenav-menu-heading">Addons</div> -->
-                         
-                            <!-- <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a> -->
+     
                         </div>
                     </div>
                     <div class="sb-sidenav-footer bg-dark">
-                        <div class="small">Logged in as: <?=$_SESSION['admin'] ?></div>
+                        <div class="small">Logged in as: <?=$_SESSION['admin']; ?></div>
                        <i>FCE KATSINA</i>
                     </div>
                 </nav>
@@ -125,99 +98,83 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">SCHEDULES</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">This is all our Schedule</li>
                         </ol>
                         <div class="row">
-                            <div class="col-xl-3 col-md-6 text-center"> <!--col-xl-3-->
+                            <!-- <div class=" col-md-6 text-center"> col-xl-3
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body text-cente">Courses</div>
+                                    <div class="card-body text-cente">Total Courses</div>
                                     <div class="card-footer d-flex align-items-center justify-content-center">
-                                        <a class="small text-white " href="../add_courses/">Add Course</a>
-                                        <div class="small text-white text-cente"></div>
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white text-cente">&#8358;25</div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 text-center">
-                                <div class="card bg-success text-cente text-white mb-4">
-                                    <div class="card-body text-cente"> Staffs</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-center">
-                                        <a class="small text-white " href="../add_staff/">Add Staff</a>   <i class="fas fa-angle-right"></i>  
-                                        <div class="small text-white text-cente"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 text-center">
+                                </div> -->
+                            <!-- </div> -->
+                            <div class=" col-md-12 text-center">
                                 <div class="card bg-success text-cente text-white mb-4">
                                     <div class="card-body text-cente">Schedule</div>
                                     <div class="card-footer d-flex align-items-center justify-content-center">
-                                        <a class="small text-white " href="../add_schedule/">Add Schedule</a>   <i class="fas fa-angle-right"></i>  
+                                        <!-- <a class="small text-white stretched-link" href="#">View Details</a>   <i class="fas fa-angle-right"></i>   -->
                                         <div class="small text-white text-cente"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Success Card</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Registration Information</div>
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Danger Card</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white " href="../add_register/">Add</a>
+                                        <a class="small text-white stretched-link" href="#">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class=" col-md-12">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Payment Details</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white " href="../add_payment">Add</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
               
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table "></i>
-                                Available Courses
+                                Available Schedule In this Year
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple" class="table table-striped table-hover">
                                     <thead>
-                                       
                                         <tr>
                                             <th>SN</th>
-                                            <th>Course</th>
-                                            <th>Department</th>
-                                            <th>Programmes</th>
+                                            <th>Schedule</th>
                                             <th>Comment</th>
-                                            <th>Date</th>
                                             <th>Action</th>
                                         
                                         </tr>
                                     </thead>
                                 
-                                    <tbody>
-                                    <?php
+                                    <tbody >
+                                        <?php
                                         $sn = 1;
-                                        include_once("../form/index.php");
-                                        $dat = query1($conn);
-                                        foreach ($dat as $data ) {
-                                            # code...
-                                        
+                                            include_once("../form/index.php");
+                                            $dat = query3($conn);
+                                            foreach ($dat as $key => $data) {
+                                                
                                         ?>
                                         <tr>
-                                            <td><?=$sn++ ?></td>
-                                            <td><?=$data['course']?></td>
-                                            <td><?=$data['department']?></td>
-                                            <td><?=$data['programmes']?></td>
-                                            <td><?=$data['about']?></td>
-                                            <td><?=$data['date']?></td>
-                                            <td><a class="btn btn-success" href="edit.php?edit=<?=$data['id']?>"><i class="fa fa-edit"></i></a></td>
+                                            <td><?=$sn++?></td>
+                                            <td><?=$data['schedule']; ?></td>
+                                            <td><?=$data['comment']; ?></td>
+                                            <td><a class="btn btn-success" href="edit.php?edit=<?=$data['id']; ?>"> <i class="fa fa-edit  "></i></a></td> 
                                         </tr>
-                                        <?php } ?>
+                                        <?php  } ?>
                                         
+                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -228,9 +185,10 @@
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
                             <div class="text-muted">Copyright &copy; <a href="#">FCE KATSINA</a> 
-                                <script>
+                                <?="20".date("y")?>
+                            <!-- <script>
                                     document.write(Date())
-                                </script>
+                                </script> -->
                             </div>
                             <div>
                                 <a href="#">Privacy Policy</a>

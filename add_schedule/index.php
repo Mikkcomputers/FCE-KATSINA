@@ -1,7 +1,6 @@
 <?php
-    include_once("../core.php");
-    include "../form/index.php";
-    
+    // include_once("../core.php");
+    include_once("../form/index.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Adding Course - FCE</title>
+        <title>Adding Schedule - FCE</title>
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -23,35 +22,44 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add School Course</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add School Schedule</h3></div>
                                     <div class="card-body">
-                                        <form action="../form/index.php" method="post">
-                                            <div class="row mb-3">
+                                        <form action="" method="post">
+                                            <!-- <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="couse" required  id="inputFirstName" type="text" placeholder="" />
-                                                        <label for="inputFirstName">Course</label>
+                                                        <input class="form-control" name="name" required  id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                        <label for="inputFirstName">Staff Name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" name="department" required id="inputLastName" type="text" placeholder="" />
-                                                        <label for="inputLastName">Department</label>
+                                                        <input class="form-control" name="position" required id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                        <label for="inputLastName">Position</label>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" name="programmes" required id="inputLastName" type="text" placeholder=""/>
-                                                <label for="inputEmail">Programmes</label>
+                                                <input class="form-control" name="schedule" required id="inputEmail" type="text" placeholder="Adding Schedule" />
+                                                <label for="inputEmail">Schedule</label>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" name="about"  id="inputLastName" type="text" placeholder="" />
-                                                <label for="inputEmail">About</label>
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="comment" id="inputPassword" required type="text" placeholder="add comment" />
+                                                        <label for="inputPassword">Comment</label>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
+                                                        <label for="inputPasswordConfirm">Confirm Password</label>
+                                                    </div>
+                                                </div> -->
                                             </div>
-                                           
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                    <button name="btn_course" class="btn btn-success btn-block">Add</button>
+                                                    <button name="btn_schedule" class="btn btn-success btn-block">Add</button>
                                                 </div>
                                             </div>
                                         </form>

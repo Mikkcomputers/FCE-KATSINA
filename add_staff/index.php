@@ -1,7 +1,7 @@
 <?php
-    include_once("../core.php");
-    include "../form/index.php";
-    
+    // include_once("../core.php");
+    include_once("../form/index.php");
+    // echo $_SESSION['admin'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Adding Course - FCE</title>
+        <title>Adding Staffs - FCE</title>
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -23,35 +23,47 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add School Course</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add School Staff</h3></div>
                                     <div class="card-body">
-                                        <form action="../form/index.php" method="post">
+                                        <form action="" method="post">
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="couse" required  id="inputFirstName" type="text" placeholder="" />
-                                                        <label for="inputFirstName">Course</label>
+                                                        <input class="form-control" name="name" required  id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                        <label for="inputFirstName">Staff Name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" name="department" required id="inputLastName" type="text" placeholder="" />
-                                                        <label for="inputLastName">Department</label>
+                                                        <input class="form-control" name="position" required id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                        <label for="inputLastName">Position</label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" name="programmes" required id="inputLastName" type="text" placeholder=""/>
-                                                <label for="inputEmail">Programmes</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" name="about"  id="inputLastName" type="text" placeholder="" />
-                                                <label for="inputEmail">About</label>
-                                            </div>
                                            
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="phone" id="inputPassword" required type="number" placeholder="Create a password" />
+                                                        <label for="inputPassword">Phone Number</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 ">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="email" id="inputPasswordConfirm" type="email" placeholder="Confirm password" />
+                                                        <label for="inputPasswordConfirm">Email Address</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 ">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="about" id="inputPasswordConfirm" type="text" placeholder="Confirm password" />
+                                                    <label for="inputPasswordConfirm">About</label>
+                                                </div>
+                                            </div>
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                    <button name="btn_course" class="btn btn-success btn-block">Add</button>
+                                                    <button name="btn_staff" class="btn btn-success btn-block">Add</button>
                                                 </div>
                                             </div>
                                         </form>
