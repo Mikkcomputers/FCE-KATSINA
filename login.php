@@ -20,7 +20,7 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form action="./form/index.php" method="post">
+                                        <form action="../main/login.php" method="post">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputEmail" required name="username" type="text" placeholder="name@example.com" />
                                                 <label for="inputEmail">User Name</label>

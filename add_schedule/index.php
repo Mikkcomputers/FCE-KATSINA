@@ -14,7 +14,7 @@
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-success">
+    <body style="background-color: #f1f1f1;">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -22,41 +22,37 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add School Schedule</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4 text-success">Add School Schedule</h3></div>
                                     <div class="card-body">
                                         <form action="" method="post">
-                                            <!-- <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="name" required  id="inputFirstName" type="text" placeholder="Enter your first name" />
-                                                        <label for="inputFirstName">Staff Name</label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" name="position" required id="inputLastName" type="text" placeholder="Enter your last name" />
-                                                        <label for="inputLastName">Position</label>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" name="schedule" required id="inputEmail" type="text" placeholder="Adding Schedule" />
-                                                <label for="inputEmail">Schedule</label>
+                                        <div class="form-floating mb-3">
+                                                <input class="form-control" name="title" required id="inputEmail" type="text" placeholder="Adding Schedule" />
+                                                <label for="inputEmail">Title</label>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="comment" id="inputPassword" required type="text" placeholder="add comment" />
-                                                        <label for="inputPassword">Comment</label>
+                                                        <input class="form-control" name="distribution" id="inputPassword" required type="text" placeholder="add comment" />
+                                                        <label for="inputPassword">Distribution</label>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="col-md-6">
-                                                    <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
-                                                        <label for="inputPasswordConfirm">Confirm Password</label>
-                                                    </div>
-                                                </div> -->
+                                               
                                             </div>
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating mb-3 mb-md-0">
+                                                        <input class="form-control" name="date" required  id="inputFirstName" type="date" placeholder="Enter your first name" />
+                                                        <label for="inputFirstName">Date</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input class="form-control" name="time" required id="inputLastName" type="time" placeholder="Enter your last name" />
+                                                        <label for="inputLastName">Time</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
                                                     <button name="btn_schedule" class="btn btn-success btn-block">Add</button>
@@ -65,7 +61,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="../dashboard">Back to Dashboard</a></div>
+                                        <div class="small"><a href="../dashboard" class="text-success">Back to Dashboard</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -77,11 +73,11 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; FCE KATISNA</div>
+                            <div class="text-muted  text-success">Copyright &copy; FCE KATISNA</div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a class=" text-success" href="#">Privacy Policy</a>
                                 &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a class=" text-success" href="#">Terms &amp; Conditions</a>
                             </div>
                         </div>
                     </div>
