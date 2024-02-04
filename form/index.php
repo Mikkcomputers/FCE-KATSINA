@@ -1,5 +1,9 @@
 <?php
-    include_once("./server/connection.php");
+define("HOST","localhost");
+define("USER","root");
+define("PASS","");
+define("DB_NAME","fce");
+    // include "./server/connection.php";
     $conn = new mysqli(HOST,USER,PASS,DB_NAME);
 
 //register function
@@ -41,13 +45,13 @@
             if ($count>0) {
                 // session_start();
                 $_SESSION['admin'] = $username;
-                header("location: ../dashboard");
+                header("location: ../main/dashboard");
             }else{
-                header("location: ../login.php");
+                header("location: ../login.php").$conn->error;
             }
          }
     }
-    login($conn);
+    // login($conn);
 
 
     //adding courses
@@ -64,7 +68,7 @@
             $res = $stm->execute();
             // <!-- // $res = $stmt->get_result; -->
             if ($res === true) {
-                echo"adding course successfully";
+                echo"<h3 class='text-light text-center'>Adding Course Successfully</h3>";
             }else{
                 echo"fail to adding course".$conn->error;
             }

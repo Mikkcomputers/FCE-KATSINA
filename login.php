@@ -20,7 +20,32 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form action="../main/login.php" method="post">
+                                        <?php
+                                        // login function
+                                                include "./server/index.php";
+                                                // function login($conn) {
+                                                    if (isset($_POST['btn_login'])) {
+                                                    $username = $_POST['username'];
+                                                    $password = $_POST['password'];
+
+                                                    $sql = "SELECT * FROM `admin` WHERE `username` = ? AND `password` = ?";
+                                                    $stmt = $conn->prepare($sql);
+                                                    $stmt->bind_param("ss", $username, $password);
+                                                    $res = $stmt->execute();
+                                                    $res = $stmt->get_result();
+                                                    $count = $res->num_rows;
+                                                    if ($count>0) {
+                                                        session_start();
+                                                        $_SESSION['admin'] = $username;
+                                                        header("location: ../main/dashboard");
+                                                    }else{
+                                                        echo"<h3 class='text-danger text-center'>Invalid email or password</h3>".$conn->error;
+                                                    }
+                                                    }
+                                            // }
+                                            // login($conn);
+                                        ?>
+                                        <form action="" method="post">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputEmail" required name="username" type="text" placeholder="name@example.com" />
                                                 <label for="inputEmail">User Name</label>

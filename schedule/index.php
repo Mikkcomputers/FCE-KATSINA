@@ -37,7 +37,7 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <!-- <li><a class="dropdown-item" href="#!">Activity Log</a></li> -->
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="../logout.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="../../">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -151,8 +151,10 @@
                                     <thead>
                                         <tr>
                                             <th>SN</th>
-                                            <th>Schedule</th>
-                                            <th>Comment</th>
+                                            <th>Title</th>
+                                            <th>Distribution</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
                                             <th>Action</th>
                                         
                                         </tr>
@@ -168,8 +170,10 @@
                                         ?>
                                         <tr>
                                             <td><?=$sn++?></td>
-                                            <td><?=$data['schedule']; ?></td>
-                                            <td><?=$data['comment']; ?></td>
+                                            <td><?=$data['title']; ?></td>
+                                            <td><?=$data['distribution']; ?></td>
+                                            <td><?=$data['date']; ?></td>
+                                            <td><?=$data['time']; ?></td>
                                             <td><a class="btn btn-success" href="edit.php?edit=<?=$data['id']; ?>"> <i class="fa fa-edit  "></i></a></td> 
                                         </tr>
                                         <?php  } ?>
