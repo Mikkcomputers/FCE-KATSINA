@@ -1,5 +1,6 @@
 <?php
-include_once("../server/index.php");
+    include_once("./server/connection.php");
+    $conn = new mysqli(HOST,USER,PASS,DB_NAME);
 
 //register function
     function register($conn){
@@ -96,12 +97,14 @@ include_once("../server/index.php");
     //adding schedule
     function schedule($conn) {
         if (isset($_POST['btn_schedule'])) {
-            $schedule = $_POST['schedule'];
-            $comment = $_POST['comment'];
+            $title = $_POST['title'];
+            $distribution = $_POST['distribution'];
+            $date = $_POST['date'];
+            $time = $_POST['time'];
 
-            $sql = "INSERT INTO schedule(`schedule`, `comment`)VALUES(?,?)";
+            $sql = "INSERT INTO schedule(`title`,`distribution`,`date`,`time`)VALUES(?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss",$schedule, $comment);
+            $stmt->bind_param("ssss",$title, $distribution, $date, $time);
             $res = $stmt->execute();
 
             if ($res === true) {
