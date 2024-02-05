@@ -208,13 +208,8 @@ define("DB_NAME","fce");
             return [];
         }
     }
-    // function query2($conn) {
-    //     $sql = "SELECT * staff";
-    //     $result = $conn->query($sql);
-    //     if ($result->num_rows>0) {
-    //         return $result->fetch_all(MYSQLI_ASSOC);
-    //     }else{
-    //         return[];
-    //     }
-    // }
+
+
+
+
 ?>

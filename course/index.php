@@ -152,7 +152,7 @@
                                             <td><?=$data['programmes']?></td>
                                             <td><?=$data['about']?></td>
                                             <td><?=$data['date']?></td>
-                                            <td><a class="btn btn-success" href="edit.php?edit=<?=$data['id']?>"><i class="fa fa-edit"></i></a></td>
+                                            <td><a class="btn btn-success" href="../add_courses/?edit=<?=$data['id']?>"><i class="fa fa-edit"></i></a></td>
                                         </tr>
                                         <?php } ?>
                                         
