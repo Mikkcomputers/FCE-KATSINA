@@ -69,7 +69,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 PAYMENT DETAILS
                             </a>
-                            <a class="nav-link" href="../register-infor">
+                            <a class="nav-link" href="../register_infor/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 REGISTER INFO
                             </a>

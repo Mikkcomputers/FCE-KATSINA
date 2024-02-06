@@ -1,6 +1,53 @@
 <?php
-    // include_once("../core.php");
+    include_once("../core.php");
     include_once("../form/index.php");
+
+    $update = false;
+    $title = "";
+    $distribution = "";
+    $date = "";
+    $time = "";
+if(isset($_GET['edit'])){
+    $update = true;
+    $id = $_GET['edit'];
+
+    $sql = "SELECT * FROM `schedule` WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+        if ($update == true) {
+        
+            $title = $row['title'];
+            $distribution = $row['distribution'];
+            $date = $row['date'];
+            $time = $row['time'];
+        }
+}
+
+//update schedule
+
+if (isset($_POST['btn_update'])) {
+    $hidden = $_POST['hidden'];
+    $title = $_POST['title'];
+    $distribution = $_POST['distribution'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
+
+    $sql = "UPDATE schedule SET`title` = ?,`distribution` = ?,`date` = ?,`time` = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssi",$title, $distribution, $date, $time, $id);
+    $res = $stmt->execute();
+
+    if ($res === true) {
+        echo"<h3 class='text-center text-success'>Updating schedule successfully</h3>";
+    }else{
+        echo"Updating shedule fail...".$conn->error;
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,17 +69,24 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4 text-success">Add School Schedule</h3></div>
+                                    <?php
+                                        if ($update === true): ?>
+                                            
+                                            <div class="card-header"><h3 class="text-center font-weight-light my-4 text-success">Updating School Schedule</h3></div>
+                                        <?php else: ?>
+                                            <div class="card-header"><h3 class="text-center font-weight-light my-4 text-success">Add School Schedule</h3></div>
+                                        <?php endif; ?>
                                     <div class="card-body">
                                         <form action="" method="post">
                                         <div class="form-floating mb-3">
-                                                <input class="form-control" name="title" required id="inputEmail" type="text" placeholder="Adding Schedule" />
+                                            <input type="hidden" name="hidden" value="<?=$id ?>">
+                                                <input class="form-control" name="title" value="<?=$title ?>"  required id="inputEmail" type="text" placeholder="Adding Schedule" />
                                                 <label for="inputEmail">Title</label>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-12">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="distribution" id="inputPassword" required type="text" placeholder="add comment" />
+                                                        <input class="form-control" name="distribution" value="<?=$distribution ?>" id="inputPassword" required type="text" placeholder="add comment" />
                                                         <label for="inputPassword">Distribution</label>
                                                     </div>
                                                 </div>
@@ -41,13 +95,13 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="date" required  id="inputFirstName" type="date" placeholder="Enter your first name" />
+                                                        <input class="form-control" name="date" value="<?=$date ?>" required  id="inputFirstName" type="date" placeholder="Enter your first name" />
                                                         <label for="inputFirstName">Date</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" name="time" required id="inputLastName" type="time" placeholder="Enter your last name" />
+                                                        <input class="form-control" name="time" value="<?=$time ?>" required id="inputLastName" type="time" placeholder="Enter your last name" />
                                                         <label for="inputLastName">Time</label>
                                                     </div>
                                                 </div>
@@ -55,7 +109,14 @@
                                             
                                             <div class="mt-4 mb-0">
                                                 <div class="d-grid">
-                                                    <button name="btn_schedule" class="btn btn-success btn-block">Add</button>
+                                                    <?php
+                                                    if ($update === true){ ?>
+                                                        <button name="btn_update" class="btn btn-success btn-block">Update</button>
+                                                    <?php 
+                                                    }else{
+                                                        ?>
+                                                        <button name="btn_schedule" class="btn btn-success btn-block">Add</button>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </form>

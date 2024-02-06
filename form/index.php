@@ -131,7 +131,7 @@ define("DB_NAME","fce");
             $res = $stmt->execute();
 
             if ($res === true) {
-                echo"adding payment details successfully";
+                echo"<h3 class='text-center text-success'>Adding payment details successfully</h3>";
             }else{
                 echo"adding payment details fail...".$conn->error;
             }
@@ -149,7 +149,7 @@ define("DB_NAME","fce");
             $stmt->bind_param("s", $infor);
             $res = $stmt->execute();
             if ($res === true) {
-                echo"adding successfully";
+                echo"<h3 class='text-center text-success'>adding successfully</h3>";
             }else{
                 echo"adding fail..".$conn->error;
             }

@@ -47,11 +47,11 @@
                     <div class="sb-sidenav-menu bg-success" >
                         <div class="nav ">
                             <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
-                            <a class="nav-link" href="../">
+                            <a class="nav-link" href="../dashboard/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="../">
+                            <a class="nav-link" href="../course/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Courses
                             </a>
@@ -102,15 +102,7 @@
                             <li class="breadcrumb-item active">This is all about School Payment</li>
                         </ol>
                         <div class="row">
-                            <!-- <div class=" col-md-6 text-center"> col-xl-3
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body text-cente">Total Courses</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-center">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white text-cente">&#8358;25</div>
-                                    </div>
-                                </div> -->
-                            <!-- </div> -->
+                           
                             <div class=" col-md-12 text-center">
                                 <div class="card bg-success text-cente text-white mb-4">
                                     <div class="card-body text-cente">Payment</div>
@@ -120,24 +112,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div> -->
+                
                         </div>
               
                         <div class="card mb-4">
@@ -170,7 +145,7 @@
                                             <td><?=$sn++?></td>
                                             <td><?=$data['infor']; ?></td>
                                             <td><?=$data['about']; ?></td>
-                                            <td><a class="btn btn-success" href="edit.php?edit=<?=$data['about']; ?>"><i class="fa fa-edit "></i></a></td> 
+                                            <td><a class="btn btn-success" href="../add_payment/?edit=<?=$data['id']; ?>"><i class="fa fa-edit "></i></a></td> 
                                         </tr>
                                         <?php endforeach ?>
                                         

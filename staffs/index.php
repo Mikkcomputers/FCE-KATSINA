@@ -47,11 +47,11 @@
                     <div class="sb-sidenav-menu bg-success">
                         <div class="nav ">
                             <!-- <div class="sb-sidenav-menu-heading">Core</div> -->
-                            <a class="nav-link" href="../">
+                            <a class="nav-link" href="../dashboard/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="../">
+                            <a class="nav-link" href="../course/">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Courses
                             </a>

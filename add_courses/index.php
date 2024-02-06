@@ -1,6 +1,7 @@
 <?php
     include_once("../core.php");
     include "../form/index.php";
+    
     $update = false;
     $course = "";
     $department = "";
@@ -17,7 +18,7 @@
     $result = $stmt->get_result();
     if ($update == true) {
         # code...
-        $row = mysqli_fetch_assoc($result);
+        $row = $result->fetch_assoc();
         $course = $row['course'];
         $department = $row['department'];
         $programme = $row['programmes'];
@@ -73,7 +74,7 @@
                                             <?php
                                         }else{ ?>
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Add School Course</h3></div>
-                                   <?php }?>
+                                   <?php } ?>
                                     <div class="card-body">
                                         <form action="" method="post">
                                             <div class="row mb-3">
