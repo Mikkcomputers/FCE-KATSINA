@@ -1,3 +1,7 @@
+<?PHP
+    include_once("../form/index.php");
+    update($conn);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,7 +11,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Register - FCE</title>
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body style="background-color: #f1f1f1;">
@@ -18,9 +22,9 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Update Account</h3></div>
                                     <div class="card-body">
-                                        <form action="./form/index.php" method="post">
+                                        <form action="" method="post">
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
@@ -64,13 +68,13 @@
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <button name="btn_reg" class="form-control btn btn-success btn-block">Create Account</button>
+                                                <button name="btn_update" class="form-control btn btn-success btn-block">Update Account</button>
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center py-3">
+                                    <!-- <div class="card-footer text-center py-3">
                                         <div class="small"><a href="login.php">Have an account? Go to login</a></div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -81,7 +85,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; FCE KATINA</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;

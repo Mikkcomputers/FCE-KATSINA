@@ -25,17 +25,17 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Add School Staff</h3></div>
                                     <div class="card-body">
-                                        <form action="" method="post">
+                                        <form action="" method="post" enctype="multipart/form-data">
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="name" required  id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                        <input class="form-control" name="name" required  id="inputFirstName" type="text" placeholder="staff Name" />
                                                         <label for="inputFirstName">Staff Name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" name="position" required id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                        <input class="form-control" name="position" required id="inputLastName" type="text" placeholder="position" />
                                                         <label for="inputLastName">Position</label>
                                                     </div>
                                                 </div>
@@ -44,21 +44,25 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="phone" id="inputPassword" required type="number" placeholder="Create a password" />
+                                                        <input class="form-control" name="phone" id="inputPassword" required type="number" placeholder="phone number" />
                                                         <label for="inputPassword">Phone Number</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 ">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" name="email" id="inputPasswordConfirm" type="email" placeholder="Confirm password" />
+                                                        <input class="form-control" name="email" id="inputPasswordConfirm" type="email" placeholder="email addree" />
                                                         <label for="inputPasswordConfirm">Email Address</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 ">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" name="about" id="inputPasswordConfirm" type="text" placeholder="Confirm password" />
+                                                    <input class="form-control" name="about" id="inputPasswordConfirm" type="text" placeholder="about" />
                                                     <label for="inputPasswordConfirm">About</label>
+                                                </div>
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    <input class="form-control" name="image" id="inputPasswordConfirm" type="file" placeholder="upload image" />
+                                                    <label for="inputPasswordConfirm">Upload Image</label>
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">

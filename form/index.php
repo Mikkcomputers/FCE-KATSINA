@@ -52,7 +52,49 @@ define("DB_NAME","fce");
          }
     }
     // login($conn);
+// include "";
+//reset password
+    function resett($conn) {
+        if (isset($_POST['btn-reset'])) {
+           $email = $_POST['email'];
 
+           $sql = "SELECT * FROM `admin` WHERE `email` = ?";
+           $stmt = $conn->prepare($sql);
+           $stmt->bind_param("s", $email);
+           $res = $stmt->execute();
+           $res = $stmt->get_result();
+           $count = $res->num_rows;
+           if ($count>0) {
+            echo"<h3 class='text-success text-center'>Correct Password</h3>";
+            header("location: ./update_password");
+            
+        }else{
+               echo"<h3 class=' text-center'>In Correct Password</h3>";
+               header("location: ./password.php").$conn->error;
+           }
+        }
+   }
+   function update($conn){
+    if (isset($_POST['btn_update'])) {
+        $fullname = $_POST['fullname'];
+        $username = $_POST['username'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $password = $_POST['password'] == $cpassword = $_POST['cpassword'];
+        
+
+        $sql = "UPDATE `admin` SET `fullname` = ?, `username` = ?, `phone` = ?, `email` = ?,`password` = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssss",$fullname, $username,$phone, $email, $password);
+        $res = $stmt->execute();
+        if ($res) {
+            header("location: ../login.php");
+        }else{
+            header("location: ../register.php");
+            // echo"register faillllll...".$conn->error;
+        }
+    }
+}
 
     //adding courses
     function courses($conn) {
@@ -78,24 +120,54 @@ define("DB_NAME","fce");
 
     //adding staffs
     function staffs($conn) {
-        if (isset($_POST['btn_staff'])) {
+        if (isset($_POST['btn_staff']) ){ //&& $_FILES['image']{
+            $errors = array();
             $name = $_POST['name'];
             $position = $_POST['position'];
             $phone = $_POST['phone'];
             $email = $_POST['email'];
             $about = $_POST['about'];
 
-            $sql = "INSERT INTO staff(`name`, `position`, `phone`, `email`, `about`)VALUES(?,?,?,?,?)";
+
+
+            // image validation
+            $image = $_FILES['image'];
+
+            $image_name = $image['name'];
+            $image_type = $image['type'];
+            $image_size = $image['size'];
+            $image_error = $image['error'];
+            $tmp_name = $image['tmp_name'];
+       
+            $allowed_exts = array("jpg", "png", "jpeg", "gif", "svg");
+            $ext = pathinfo($image_name, PATHINFO_EXTENSION);
+       
+            $ext_lc = strtolower($ext);
+       
+            if(!in_array($ext_lc, $allowed_exts)){
+               array_push($errors, "invalid image type");
+            }
+       
+            if($image_size>100000){
+               array_push($errors, "You can only upload an image less than 2MB");
+            }
+       
+            if(count($errors)===0){
+               $new_image_name = substr(uniqid("IMG-"), 1,10).".".$ext_lc;
+               //end validation
+
+            $sql = "INSERT INTO staff(`name`, `position`, `phone`, `email`, `,about`, `image`)VALUES(?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss", $name, $position, $phone, $email, $about);
+            $stmt->bind_param("ssssss", $name, $position, $phone, $email, $about, $new_image_name);
             $res = $stmt->execute();
             if ($res === true) {
+                 move_uploaded_file($tmp_name, "uploads/".$new_image_name);
                 echo"adding successfully";
             }else{
                 echo"adding staff fail...".$conn->error;
             }
         }
-    }
+    }}
     staffs($conn);
 
     //adding schedule
