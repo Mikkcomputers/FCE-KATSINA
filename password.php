@@ -1,5 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Reset</title>
+    <script src="../sweetalert2/sweetalert2/dist/sweetalert2.all.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
 <?php
-    // include_once("./update_password");
     include "./server/index.php";
 
     if (isset($_POST['btn-reset'])) {
@@ -13,11 +24,23 @@
         $count = $res->num_rows;
         if ($count>0) {
             $data= $res->fetch_assoc()['email'];
-        //  echo"<h3 class='text-success text-center'>Correct Password</h3>";
-         header("location: ./update_password?email=$data");
+        echo"
+        <script>
+            swal.fire('Done','You Will Change Your Password','success')
+            .then(
+                function(res){
+                    if(true){
+                        window.location='./update_password?email=$data'
+                    }
+                }
+            )
+        </script>
+    ";
          
      }else{
-            echo"<h3 class='text-danger text-center'>In Correct Email Address</h3>".$conn->error;
+            echo"<script>
+                swal.fire('Invalid','In Correct Email Address','error')
+            </script>".$conn->error;
             // header("location: ./password.php");
         }
      }
@@ -42,7 +65,7 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Password Recovery</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Enter Your Email Address</h3></div>
                                     <div class="card-body">
                                         <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
                                         <form action="" method="post">

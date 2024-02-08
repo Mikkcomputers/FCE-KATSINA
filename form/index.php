@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fce katsina</title>
+    <script src="../../sweetalert2/sweetalert2/dist/sweetalert2.all.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
 <?php
 define("HOST","localhost");
 define("USER","root");
@@ -21,10 +33,31 @@ define("DB_NAME","fce");
             $stmt->bind_param("sssss",$fullname, $username,$phone, $email, $password);
             $res = $stmt->execute();
             if ($res) {
-                header("location: ../login.php");
+                // header("location: ../login.php");
+                echo"  <script>
+                swal.fire('Done','Thank You For Create an Account','success')
+                .then(
+                    function(res){
+                        if(true){
+                            window.location='../login.php'
+                        }
+                    }
+                )
+            </script>
+        ";
             }else{
-                header("location: ../register.php");
-                // echo"register faillllll...".$conn->error;
+               
+                echo"  <script>
+                swal.fire('Error','Create an Account Fail...','error')
+                .then(
+                    function(res){
+                        if(true){
+                            window.location='../register.php'
+                        }
+                    }
+                )
+            </script>
+        ".$conn->error;
             }
         }
     }
@@ -76,22 +109,56 @@ define("DB_NAME","fce");
    }
    function update($conn){
     if (isset($_POST['btn_update'])) {
-        $fullname = $_POST['fullname'];
-        $username = $_POST['username'];
-        $phone = $_POST['phone'];
-        $email = $_POST['email'];
-        $password = $_POST['password'] == $cpassword = $_POST['cpassword'];
+        
+        $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
+        if ($password != $cpassword) {
+               echo"  <script>
+                swal.fire('Error','Is not Desame ','error')
+                .then(
+                    function(res){
+                        if(true){
+                            window.location='../update_password'
+                        }
+                    }
+                )
+            </script>
+        ";
+            
+        }
         
 
-        $sql = "UPDATE `admin` SET `fullname` = ?, `username` = ?, `phone` = ?, `email` = ?,`password` = ?";
+        $sql = "UPDATE `admin` SET `password` = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss",$fullname, $username,$phone, $email, $password);
+        $stmt->bind_param("s", $password);
         $res = $stmt->execute();
         if ($res) {
-            header("location: ../login.php");
+            // header("location: ../login.php");
+            echo"  <script>
+            swal.fire('Done','Thank You For For Update Password','success')
+            .then(
+                function(res){
+                    if(true){
+                        window.location='../login.php'
+                    }
+                }
+            )
+        </script>
+    ";
         }else{
-            header("location: ../register.php");
-            // echo"register faillllll...".$conn->error;
+            // header("location: ../register.php");
+            echo"  <script>
+            swal.fire('Information','Password Can not Update '<br>' Pleased Register again','infor')
+            .then(
+                function(res){
+                    if(true){
+                        window.location='../register.php'
+                    }
+                }
+            )
+        </script>
+    ".$conn->error;
+            
         }
     }
 }
@@ -110,9 +177,30 @@ define("DB_NAME","fce");
             $res = $stm->execute();
             // <!-- // $res = $stmt->get_result; -->
             if ($res === true) {
-                echo"<h3 class='text-light text-center'>Adding Course Successfully</h3>";
+                echo"  <script>
+                swal.fire('Done','Adding Course Successfully','success')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ";
             }else{
-                echo"fail to adding course".$conn->error;
+                // echo"fail to adding course".$conn->error;
+                echo"  <script>
+                swal.fire('Done','fail to adding course','success')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ".$conn->error;
             }
         }
     }
@@ -156,15 +244,41 @@ define("DB_NAME","fce");
                $new_image_name = substr(uniqid("IMG-"), 1,10).".".$ext_lc;
                //end validation
 
-            $sql = "INSERT INTO staff(`name`, `position`, `phone`, `email`, `,about`, `image`)VALUES(?,?,?,?,?,?)";
+            $sql = "INSERT INTO `staff`(`name`, `position`, `phone`, `email`, `about`, `image`)VALUES(?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("ssssss", $name, $position, $phone, $email, $about, $new_image_name);
             $res = $stmt->execute();
             if ($res === true) {
-                 move_uploaded_file($tmp_name, "uploads/".$new_image_name);
-                echo"adding successfully";
+                // include "../uploads";
+                 move_uploaded_file($tmp_name, "./main/uploads".$new_image_name);
+                // echo"adding successfully";
+                echo"  <script>
+                swal.fire('Done','Adding Staff Successfully','success')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ";
             }else{
-                echo"adding staff fail...".$conn->error;
+                foreach ($errors as $value) {
+                    echo"<h3 class='text-center text-danger'>$value</h3>";
+                }
+                // echo"adding staff fail...".$conn->error;
+                echo"  <script>
+                swal.fire('Error','Adding Staff Fail...','error')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ";
             }
         }
     }}
@@ -184,9 +298,31 @@ define("DB_NAME","fce");
             $res = $stmt->execute();
 
             if ($res === true) {
-                echo"adding schedule successfully";
+                // echo"adding schedule successfully";
+                echo"  <script>
+                swal.fire('Done','Adding Schedule Successfully','success')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ";
             }else{
-                echo"adding shedule fail...".$conn->error;
+                // echo"adding shedule fail...".$conn->error;
+                echo"  <script>
+                swal.fire('Error','Adding Schedule Fail.. ','error')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ".$conn->error;
             }
         }
     }
@@ -203,9 +339,31 @@ define("DB_NAME","fce");
             $res = $stmt->execute();
 
             if ($res === true) {
-                echo"<h3 class='text-center text-success'>Adding payment details successfully</h3>";
+                // echo"<h3 class='text-center text-success'>Adding payment details successfully</h3>";
+                echo"  <script>
+                swal.fire('Done','Payment Details Added Successfully','success')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ";
             }else{
-                echo"adding payment details fail...".$conn->error;
+                // echo"adding payment details fail...".$conn->error;
+                echo"  <script>
+                swal.fire('Error','Adding Fail.... ','Error')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ".$conn->error;
             }
         }
     }
@@ -221,9 +379,31 @@ define("DB_NAME","fce");
             $stmt->bind_param("s", $infor);
             $res = $stmt->execute();
             if ($res === true) {
-                echo"<h3 class='text-center text-success'>adding successfully</h3>";
+                // echo"<h3 class='text-center text-success'>adding successfully</h3>";
+                echo"  <script>
+                swal.fire('Done','Adding  Successfully','success')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ";
             }else{
-                echo"adding fail..".$conn->error;
+                // echo"adding fail..".$conn->error;
+                echo"  <script>
+                swal.fire('Error','Adding Fail...','error')
+                // .then(
+                //     function(res){
+                //         if(true){
+                //             window.location='../login.php'
+                //         }
+                //     }
+                // )
+            </script>
+        ".$conn->error;
             }
         }
     }

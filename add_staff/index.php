@@ -1,5 +1,5 @@
 <?php
-    // include_once("../core.php");
+    // include_once("./main/uploads");
     include_once("../form/index.php");
     // echo $_SESSION['admin'];
 ?>

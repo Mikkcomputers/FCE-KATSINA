@@ -27,13 +27,13 @@
                                         <form action="" method="post">
                                           
                                             <div class="row mb-3">
-                                                <div class="col-md-6">
+                                                <div class="col-md-12">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputPassword" type="password" name="password" required placeholder="Create a password" />
-                                                        <label for="inputPassword">Password</label>
+                                                        <label for="inputPassword">New Password</label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-12 mt-3">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <input class="form-control" id="inputPasswordConfirm" type="password" name="cpassword" required placeholder="Confirm password" />
                                                         <label for="inputPasswordConfirm">Confirm Password</label>

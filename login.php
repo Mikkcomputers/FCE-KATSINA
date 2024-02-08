@@ -8,6 +8,7 @@
         <meta name="author" content="" />
         <title>Login - FCE KATSINA</title>
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="../sweetalert2/sweetalert2/dist/sweetalert2.all.js"></script>
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body style="background-color: #f1f1f1;">
@@ -37,9 +38,22 @@
                                                     if ($count>0) {
                                                         session_start();
                                                         $_SESSION['admin'] = $username;
-                                                        header("location: ../main/dashboard");
+                                                        echo"
+                                                            <script>
+                                                                swal.fire('Done','Thank You For Login','success')
+                                                                .then(
+                                                                    function(res){
+                                                                        if(true){
+                                                                            window.location='../main/dashboard'
+                                                                        }
+                                                                    }
+                                                                )
+                                                            </script>
+                                                        ";
                                                     }else{
-                                                        echo"<h3 class='text-danger text-center'>Invalid email or password</h3>".$conn->error;
+                                                        echo"<script>
+                                                            swal.fire('Invalid','In Correct Username or Password','error')
+                                                        </script>".$conn->error;
                                                     }
                                                     }
                                             // }
