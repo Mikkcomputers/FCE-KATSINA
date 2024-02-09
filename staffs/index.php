@@ -160,6 +160,7 @@
                                             <th>Position</th>
                                             <th>Phone Number</th>
                                             <th>Email Address</th>
+                                            <!-- <th>Image</th> -->
                                             <th>Action</th>
                                         
                                         </tr>
@@ -180,6 +181,7 @@
                                             <td><?=$data['position'] ?></td>
                                             <td><?=$data['phone'] ?></td>
                                             <td><?=$data['email'] ?></td>
+                                            <!-- <td><?=$data['image'] ?></td> -->
                                             <td><a class="btn btn-success" href="edit.php?edit=<?=$data['id'] ?>"><i class="fa fa-edit "></i></a></td> 
                                         </tr>
                                         <?php }?>

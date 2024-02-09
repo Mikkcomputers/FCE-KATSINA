@@ -208,7 +208,7 @@ define("DB_NAME","fce");
 
     //adding staffs
     function staffs($conn) {
-        if (isset($_POST['btn_staff']) ){ //&& $_FILES['image']{
+        if (isset($_POST['btn_staff']) && isset($_FILES['image'])){
             $errors = array();
             $name = $_POST['name'];
             $position = $_POST['position'];
@@ -216,33 +216,30 @@ define("DB_NAME","fce");
             $email = $_POST['email'];
             $about = $_POST['about'];
 
+                    
+            $image_name = $_FILES['image']['name'];
+            $image_type = $_FILES['image']['type'];
+            $image_size = $_FILES['image']['size'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            $image_error = $_FILES['image']['error'];
 
 
-            // image validation
-            $image = $_FILES['image'];
-
-            $image_name = $image['name'];
-            $image_type = $image['type'];
-            $image_size = $image['size'];
-            $image_error = $image['error'];
-            $tmp_name = $image['tmp_name'];
-       
-            $allowed_exts = array("jpg", "png", "jpeg", "gif", "svg");
+            //Validation
+            if($image_size>20000000){
+                $em = "You can only upload an image lessthan 2MB";
+            }elseif($image_error!=0){
+                $em = "There is an Error !";
+            }
             $ext = pathinfo($image_name, PATHINFO_EXTENSION);
-       
             $ext_lc = strtolower($ext);
-       
-            if(!in_array($ext_lc, $allowed_exts)){
-               array_push($errors, "invalid image type");
+            $allowed_ext = array('jpg', 'png', 'jepg', 'gif');
+            $new_image_name = uniqid('IMG-', true).".".$ext_lc;
+
+            if(!in_array($ext_lc, $allowed_ext)){
+                $em = "Unsupported file uploaded";
             }
-       
-            if($image_size>100000){
-               array_push($errors, "You can only upload an image less than 2MB");
-            }
-       
-            if(count($errors)===0){
-               $new_image_name = substr(uniqid("IMG-"), 1,10).".".$ext_lc;
-               //end validation
+            // include "../uploads/";
+            move_uploaded_file($image_tmp, '../uploads/'.$new_image_name);
 
             $sql = "INSERT INTO `staff`(`name`, `position`, `phone`, `email`, `about`, `image`)VALUES(?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
@@ -250,7 +247,6 @@ define("DB_NAME","fce");
             $res = $stmt->execute();
             if ($res === true) {
                 // include "../uploads";
-                 move_uploaded_file($tmp_name, "./main/uploads".$new_image_name);
                 // echo"adding successfully";
                 echo"  <script>
                 swal.fire('Done','Adding Staff Successfully','success')
@@ -264,9 +260,7 @@ define("DB_NAME","fce");
             </script>
         ";
             }else{
-                foreach ($errors as $value) {
-                    echo"<h3 class='text-center text-danger'>$value</h3>";
-                }
+               
                 // echo"adding staff fail...".$conn->error;
                 echo"  <script>
                 swal.fire('Error','Adding Staff Fail...','error')
@@ -278,10 +272,11 @@ define("DB_NAME","fce");
                 //     }
                 // )
             </script>
-        ";
+        ".$conn->error;
+        echo $em;
             }
         }
-    }}
+    }
     staffs($conn);
 
     //adding schedule
