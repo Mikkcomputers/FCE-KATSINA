@@ -17,15 +17,15 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success" >
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">FCE KATSINA & ATC</a>
+            <a class="navbar-brand ps-3" href="../dashboard/">FCE KATSINA & ATC</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
-            <p class="text-cente" style="color: white; padding: 7px;">FEDERAL COLLEGE OF EDUCATION KATSINA AND (ATC)</h2>
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                    <p class="text-cente" style="color: white; padding: 7px;">FEDERAL COLLEGE OF EDUCATION KATSINA AND (ATC)</h2>
+                    <!-- <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button> -->
                 </div>
             </form>
             <!-- Navbar-->
@@ -108,15 +108,7 @@
                             <li class="breadcrumb-item active">This is all our Staffs</li>
                         </ol>
                         <div class="row">
-                            <!-- <div class=" col-md-6 text-center"> col-xl-3
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body text-cente">Total Courses</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-center">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white text-cente">&#8358;25</div>
-                                    </div>
-                                </div> -->
-                            <!-- </div> -->
+                          
                             <div class=" col-md-12 text-center">
                                 <div class="card bg-success text-cente text-white mb-4">
                                     <div class="card-body text-cente">College Staffs</div>
@@ -126,24 +118,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div> -->
+                          
                         </div>
               
                         <div class="card mb-4">
@@ -182,7 +157,7 @@
                                             <td><?=$data['phone'] ?></td>
                                             <td><?=$data['email'] ?></td>
                                             <!-- <td><?=$data['image'] ?></td> -->
-                                            <td><a class="btn btn-success" href="edit.php?edit=<?=$data['id'] ?>"><i class="fa fa-edit "></i></a></td> 
+                                            <td><a class="btn btn-success" href="../add_staff/?edit=<?=$data['id'] ?>"><i class="fa fa-edit "></i></a></td> 
                                         </tr>
                                         <?php }?>
                                        
