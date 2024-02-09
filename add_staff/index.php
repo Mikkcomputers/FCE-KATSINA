@@ -154,22 +154,23 @@
         // include "./;
         move_uploaded_file($image_tmp, './uploads/'.$new_image_name);
 
-        $sql = "UPDATE `staff` SET `name`= ?, `position` ?, `phone` = ?, `email` = ?, `about` =?, `image` = ? WHERE id = ?";
-        $stmt = $conn->prepare($sql);
+        $query = "UPDATE `staff` SET `name`= ?, `position`= ?, `phone` = ?, `email` = ?, `about` =?, `image` = ? WHERE id = ?";
+        $stmt = $conn->prepare($query);
         $stmt->bind_param("ssssssi", $name, $position, $phone, $email, $about, $new_image_name, $hidden);
-        $res = $stmt->execute();
-        if ($res == true) {
+        $res1 = $stmt->execute();
+        if ($res1 == true) {
             // include "../uploads";
             // echo"adding successfully";
+            // include "../"
             echo"  <script>
             swal.fire('Done','Updating Staff Successfully','success')
-            // .then(
-            //     function(res){
-            //         if(true){
-            //             window.location='../login.php'
-            //         }
-            //     }
-            // )
+            .then(
+                function(res){
+                    if(true){
+                        window.location='../staffs'
+                    }
+                }
+            )
         </script>
     ";
         }else{

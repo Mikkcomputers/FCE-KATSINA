@@ -1,6 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Account</title>
+    <script src="../../sweetalert2/sweetalert2/dist/sweetalert2.all.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
 <?PHP
-    include_once("../form/index.php");
-    update($conn);
+    include_once("../core.php");
+    include "../server/index.php";
+
+    echo $user = $_SESSION['admin'];
+
+    if (isset($_POST['btn_update'])) {
+        $fullname = $_POST['fullname'];
+        $username = $_POST['username'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $cpassword = $_POST['cpassword'];
+
+        // $password == $cpassword;
+
+        $sql = "UPDATE `admin` SET`fullname` = ?,`username` = ?,`phone` = ?,`email` = ?,`password` = ? WHERE `username` = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssssss",$fullname, $username,$phone, $email, $password, $user);
+        $res = $stmt->execute();
+        if ($res) {
+            // include "";
+            // header("location: ../login.php");
+            echo"  <script>
+            swal.fire('Done','Thank You For Update an Account','success')
+            .then(
+                function(res){
+                    if(true){
+                        window.location='../dashboard'
+                    }
+                }
+            )
+        </script>
+    ";
+        }else{
+           
+            echo"  <script>
+            swal.fire('Information',' Fail to Update an Account,{'<br>'}  Pleased Check Your Details Before Update...','infor')
+            .then(
+                function(res){
+                    if(true){
+                        window.location='../register.php'
+                    }
+                }
+            )
+        </script>
+    ".$conn->error;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +68,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Register - FCE</title>
+        <title>Update Data - FCE</title>
         <link href="../css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
@@ -28,13 +86,13 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputFirstName" type="text" required name="fullname"  placeholder="Enter your first name" />
+                                                        <input class="form-control" id="inputFirstName"  type="text" required name="fullname"  placeholder="Enter your first name" />
                                                         <label for="inputFirstName">Full name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="inputLastName" type="text" required name="username" placeholder="Enter your last name" />
+                                                        <input class="form-control" id="inputLastName"  type="text" required name="username" placeholder="Enter your last name" />
                                                         <label for="inputLastName">User name</label>
                                                     </div>
                                                 </div>
@@ -42,13 +100,13 @@
                                            <div class="row mb-3">
                                              <div class="col-md-6">
                                                <div class="form-floating">
-                                                 <input class="form-control" id="inputEmail" type="text" name="phone" required placeholder="name@example.com" />
+                                                 <input class="form-control" id="inputEmail"  type="text" name="phone" required placeholder="name@example.com" />
                                                 <label for="inputEmail">Phone Number</label>
                                                </div>
                                             </div>
                                              <div class="col-md-6">
                                                <div class="form-floating">
-                                                 <input class="form-control" id="inputEmail" type="email" name="email" required placeholder="name@example.com" />
+                                                 <input class="form-control" id="inputEmail" type="email"  name="email" required placeholder="name@example.com" />
                                                 <label for="inputEmail">Email address</label>
                                                </div>
                                             </div>
@@ -56,7 +114,7 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" name="password" required placeholder="Create a password" />
+                                                        <input class="form-control" id="inputPassword"  type="password" name="password" required placeholder="Create a password" />
                                                         <label for="inputPassword">Password</label>
                                                     </div>
                                                 </div>
